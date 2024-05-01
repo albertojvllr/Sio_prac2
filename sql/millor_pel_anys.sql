@@ -1,5 +1,5 @@
 SELECT 
-    SUBSTRING(t.release_date, 1, 3) AS Decada,
+    (TRUNCATE(CAST(LEFT(t.release_date, 4) AS UNSIGNED) / 10, 0) * 10) AS Decada,
     AVG(i.Score) AS PuntuacionPromedio
 FROM 
     Titols t
@@ -10,6 +10,6 @@ LEFT JOIN
 WHERE 
     t.Tipus = 'MOVIE'
 GROUP BY 
-    SUBSTRING(t.release_date, 1, 3)
+    Decada
 ORDER BY 
-    PuntuacionPromedio DESC;
+    Decada ASC;
