@@ -320,3 +320,4 @@ def query11(cursor):
 
     # Muestra el diagrama
     plt.show()
+    
