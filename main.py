@@ -4,16 +4,18 @@ import matplotlib.cm as cm
 import numpy as np
 import functions as f
 import grafics as g
+import algoritme as alg
 
 config = {
     'user': "root",
-    'password': "776472",
+    'password': "",
     'host': "localhost",
-    'database': "sio_bd2",
+    'database': "sio_bd",
 }
 
 conexion = mysql.connector.connect(**config)
 cursor = conexion.cursor()
+
 while(True):
     print("Selecciona una opción:")
     print("1. Gràfics - 2.Algoritme de Recomanació - 3. Sortir")
@@ -56,6 +58,29 @@ while(True):
             g.query11(cursor)
     if input1=="2":
         #Algoritme de recomanació
+        print("Prefieres ver películas o series?")
+        tipo = input("1. Películas\n2. Series\n")
+        if tipo == "1":
+            tipo_contenido = "películas"
+        elif tipo == "2":
+            tipo_contenido = "series"
+        
+        genero = input("Prefieres un género en específico? (Deja en blanco si no tienes preferencia): ")
+        if not genero:
+            genero = None
+        duracion = input("Qué duración prefieres? (Corta, Media, Larga): ")
+        if not duracion:
+           duracion = None
+        actor =  input("Vols que actui algu en concret? ")
+        if not actor:
+            actor = None
+        plataforma =  input("Quina plataforma vols? ")
+        if not plataforma:
+            plataforma = None
+        valMin =  input("Quina valoracio minima vols? ")
+        if not valMin:
+            valMin = None
+        alg.algortime(tipo, genero, duracion, actor, plataforma, valMin, cursor)
         break
     if input1=="3":
         break    
