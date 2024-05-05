@@ -6,6 +6,8 @@ import functions as f
 import grafics as g
 import algoritme as alg
 
+
+
 config = {
     'user': "root",
     'password': "",
@@ -58,19 +60,20 @@ while(True):
             g.query11(cursor)
     if input1=="2":
         #Algoritme de recomanació
-        print("Prefieres ver películas o series?")
+        print("Fltratge:")
+        print("Podeu afegir tots els filtres que vulguessiu, \nen cas de no voler implementar un filtre sol ho teniu que deixar en blanc:")
         tipo = input("1. Películas\n2. Series\n")
-        if tipo == "1":
-            tipo_contenido = "películas"
-        elif tipo == "2":
-            tipo_contenido = "series"
-        
+        if not tipo:
+            tipo = None        
         genero = input("Prefieres un género en específico? (Deja en blanco si no tienes preferencia): ")
         if not genero:
             genero = None
-        duracion = input("Qué duración prefieres? (Corta, Media, Larga): ")
-        if not duracion:
-           duracion = None
+        duracionMin = input("Quina es la duracio minima que vols? ")
+        if not duracionMin:
+           duracionMin = None
+        duracionMax = input("Quina es la duracio maxima que vols? ")
+        if not duracionMax:
+            duracionMax = None        
         actor =  input("Vols que actui algu en concret? ")
         if not actor:
             actor = None
@@ -80,7 +83,7 @@ while(True):
         valMin =  input("Quina valoracio minima vols? ")
         if not valMin:
             valMin = None
-        alg.algortime(tipo, genero, duracion, actor, plataforma, valMin, cursor)
+        alg.algortime(tipo, genero, duracionMin, duracionMax, actor, plataforma, valMin, cursor)
         break
     if input1=="3":
         break    
