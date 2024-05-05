@@ -65,7 +65,7 @@ while(True):
         tipo = input("1. Películas\n2. Series\n")
         if not tipo:
             tipo = None        
-        genero = input("Prefieres un género en específico? (Deja en blanco si no tienes preferencia): ")
+        genero = input("Quins generes voldries veure?")
         if not genero:
             genero = None
         duracionMin = input("Quina es la duracio minima que vols? ")
